@@ -14,6 +14,8 @@ public class Tower_Movement_Listener : MonoBehaviour
     {
         Controller = GameObject.Find("Tower Controller");
         t = transform;
+
+        Twr_Team = Random.Range(1, 5);
     }
 
     // Update is called once per frame

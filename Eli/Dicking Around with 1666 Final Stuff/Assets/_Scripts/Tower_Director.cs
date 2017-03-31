@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tower_Director : MonoBehaviour {
 
     private List<GameObject> Towers_Master;
-    public Camera Minimap_Cam;
+    public Camera Minimap_Cam, Rounds_Cam, Lives_Cam;
 
 	// Use this for initialization
 	void Start () {
@@ -27,20 +27,30 @@ public class Tower_Director : MonoBehaviour {
         Towers_Master.Remove(tower);
     }
 
-    public void Activate_Cameras()
+    public void Activate_Towers()
     {
         for(int i = 0; i< Towers_Master.Count; i++)
         {
             Towers_Master[i].GetComponentInChildren<Camera>().enabled = true;
+            Towers_Master[i].GetComponentInChildren<Tower_Movement_Listener>().enabled = true;
         }
+
+        Minimap_Cam.gameObject.SetActive(true);
+        Rounds_Cam.gameObject.SetActive(true);
+        Lives_Cam.gameObject.SetActive(true);
     }
 
-    public void Deactivate_Cameras()
+    public void Deactivate_Towers()
     {
         for (int i = 0; i < Towers_Master.Count; i++)
         {
             Towers_Master[i].GetComponentInChildren<Camera>().enabled = false;
+            Towers_Master[i].GetComponentInChildren<Tower_Movement_Listener>().enabled = false;
+            Towers_Master[i].transform.rotation = Quaternion.identity;
         }
+        Minimap_Cam.gameObject.SetActive(false);
+        Rounds_Cam.gameObject.SetActive(false);
+        Lives_Cam.gameObject.SetActive(false);
     }
 
     public void Divide_Screen()
@@ -66,7 +76,9 @@ public class Tower_Director : MonoBehaviour {
             Towers_Master[i].GetComponentInChildren<Camera>().rect = new Rect((i - num_top) * bottom_width, 0f, bottom_width, height);
         }
 
+        Lives_Cam.rect = new Rect(0f, .33f, .33f, .34f);
         Minimap_Cam.rect = new Rect(0.33f, 0.33f, 0.34f, 0.34f);
+        Rounds_Cam.rect = new Rect(.67f, .33f, .33f, .34f);
 
     }
 }

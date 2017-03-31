@@ -31,10 +31,6 @@ public class Controller_Mouselook : MonoBehaviour
 
         Team = 1;
 
-        if (Cursor.lockState != CursorLockMode.Locked)   // if we haven't already, lock the cursor
-        {
-            lock_cursor();
-        }
     }
 
     // Update is called once per frame
