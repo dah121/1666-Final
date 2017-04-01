@@ -34,7 +34,8 @@ public class Tower_Attack : MonoBehaviour {
             RaycastHit hit;
             if(weapon_type == "hitscan" && Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
             {
-                if(hit.collider.gameObject.layer == 10) //10 = enemy layer
+                Debug.Log(hit.collider.gameObject.name);
+                if(hit.collider.gameObject.layer == 11) //11 = enemy layer
                 {
                     enemy = hit.collider.gameObject.transform.root.gameObject;
                     damager = enemy.GetComponent<Enemy_Damager>();
