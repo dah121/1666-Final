@@ -16,6 +16,10 @@ public class Tower_Attack : MonoBehaviour {
     public GameObject towerController;
     public Camera cam;
 
+    public Transform Beam_Origin;
+    public Beam_Effect Beam_Eff;
+
+
     private GameObject enemy;
     private Enemy_Damager damager;
 
@@ -25,23 +29,33 @@ public class Tower_Attack : MonoBehaviour {
         damager = null;
         towerController = GameObject.Find("Tower Controller"); //Remove if public variable used
         cam = transform.FindChild("Camera").gameObject.GetComponent<Camera>(); //Remove if public variable used
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(!auto_fire && Input.GetMouseButtonDown(0))
         {
+            Vector3 Beam_Dest;
+
             RaycastHit hit;
-            if(weapon_type == "hitscan" && Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
+            if (weapon_type == "hitscan" && Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
             {
-                Debug.Log(hit.collider.gameObject.name);
-                if(hit.collider.gameObject.layer == 11) //11 = enemy layer
+                //Debug.Log(hit.collider.gameObject.name);
+                if (hit.collider.gameObject.layer == 11) //11 = enemy layer
                 {
                     enemy = hit.collider.gameObject.transform.root.gameObject;
                     damager = enemy.GetComponent<Enemy_Damager>();
 
-                    damager.SendSource(this.gameObject);                  
+                    Beam_Dest = hit.collider.transform.position;
+                    damager.SendSource(this.gameObject);
                 }
+                else
+                {
+                    Beam_Dest = transform.forward;
+                }
+                Beam_Effect beam = Instantiate(Beam_Eff, transform);
+                beam.Shoot_Beam(Beam_Origin.position, Beam_Dest);
             }
         }
 	}
