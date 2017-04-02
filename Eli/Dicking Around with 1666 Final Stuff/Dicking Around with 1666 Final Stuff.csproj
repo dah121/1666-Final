@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -79,16 +77,23 @@
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Aim.cs" />
     <Compile Include="Assets\_Scripts\Beam_Effect.cs" />
+    <Compile Include="Assets\_Scripts\Cash_On_Death.cs" />
     <Compile Include="Assets\_Scripts\Controller_Mouselook.cs" />
     <Compile Include="Assets\_Scripts\Enemy_Damager.cs" />
+    <Compile Include="Assets\_Scripts\GameControl.cs" />
     <Compile Include="Assets\_Scripts\Grid_Snap.cs" />
+    <Compile Include="Assets\_Scripts\Kill_Enemy_Tester.cs" />
+    <Compile Include="Assets\_Scripts\LoadSceneOnClick.cs" />
     <Compile Include="Assets\_Scripts\Minimap_Synergy.cs" />
     <Compile Include="Assets\_Scripts\Prototype_Nav.cs" />
+    <Compile Include="Assets\_Scripts\QuitOnClick.cs" />
     <Compile Include="Assets\_Scripts\Selector_Color.cs" />
     <Compile Include="Assets\_Scripts\Shooty_Noise.cs" />
+    <Compile Include="Assets\_Scripts\Shop_Button.cs" />
     <Compile Include="Assets\_Scripts\Tower_Attack.cs" />
     <Compile Include="Assets\_Scripts\Tower_Builder.cs" />
     <Compile Include="Assets\_Scripts\Tower_Director.cs" />
+    <Compile Include="Assets\_Scripts\Tower_Level.cs" />
     <Compile Include="Assets\_Scripts\Tower_Movement_Listener.cs" />
     <Compile Include="Assets\_Scripts\Wave_Spawner.cs" />
   </ItemGroup>

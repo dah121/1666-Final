@@ -50,9 +50,10 @@ public class Tower_Director : MonoBehaviour {
             Towers_Master[i].GetComponentInChildren<Camera>().enabled = false;
             Towers_Master[i].GetComponentInChildren<Tower_Movement_Listener>().enabled = false;
             Towers_Master[i].GetComponentInChildren<Tower_Attack>().enabled = false;
-            Towers_Master[i].GetComponentInChildren<Shooty_Noise>().enabled = true;
             Towers_Master[i].transform.rotation = Quaternion.identity;
         }
+
+        Shot_Noise.enabled = false;
         Minimap_Cam.gameObject.SetActive(false);
         Rounds_Cam.gameObject.SetActive(false);
         Lives_Cam.gameObject.SetActive(false);
