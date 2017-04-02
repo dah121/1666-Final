@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z_Dicking Around with 1666 Final Stuff", "Z_Dicking Around with 1666 Final Stuff.csproj", "{90466F46-0D8E-FF78-9834-791DD6890BBF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90466F46-0D8E-FF78-9834-791DD6890BBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90466F46-0D8E-FF78-9834-791DD6890BBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90466F46-0D8E-FF78-9834-791DD6890BBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90466F46-0D8E-FF78-9834-791DD6890BBF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
