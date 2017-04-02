@@ -56,7 +56,7 @@ public class Wave_Spawner : MonoBehaviour
             Prototype_Nav enemy = Instantiate(Guy, StartLoc.position, StartLoc.rotation);
             enemy.StartWave(EndLoc.position);
             currentWaveUnits.Add(enemy);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(2);
         }
 
     }
