@@ -7,6 +7,7 @@ public class Tower_Builder : MonoBehaviour
 
     public GameObject Tower_Prefab;
     private Tower_Director Director;
+    private GameControl Control;
     private RaycastHit hit;
     private int layerMask;
     private static float timer;
@@ -14,7 +15,9 @@ public class Tower_Builder : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Director = GameObject.Find("Tower Controller").GetComponent<Tower_Director>();
+        GameObject controller_object = GameObject.Find("Tower Controller");
+        Director = controller_object.GetComponent<Tower_Director>();
+        Control = controller_object.GetComponent<GameControl>();
         timer = 0;
         //layerMask = (1 << 8);
         layerMask |= (1 << 9);
@@ -30,10 +33,11 @@ public class Tower_Builder : MonoBehaviour
             timer = .5f;
             if (Physics.Raycast(transform.position, -Vector3.up, out hit, 3f, layerMask))
             {
-                if (hit.collider.gameObject.layer != 8)
+                if (hit.collider.gameObject.layer != 8 && Control.gold >= 50)       //Change to reflect actual price later
                 {
                     GameObject tower = Instantiate(Tower_Prefab, new Vector3(transform.position.x, 1f, transform.position.z), Quaternion.identity) as GameObject;
                     Director.Add_Tower(tower);
+                    Control.gold -= 50;         //Change to reflect actual price later
                 }
             }
         }
