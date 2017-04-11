@@ -13,6 +13,7 @@ public class Controller_Mouselook : MonoBehaviour
     private float[] team_x = new float[4];
     private float[] team_y = new float[4];
     public float Sensitivity = 100f;
+    public AudioClip sound;
 
     // Use this for initialization
     void Start()
@@ -25,16 +26,7 @@ public class Controller_Mouselook : MonoBehaviour
             team_y[i]= t.localEulerAngles.y;
         }
 
-        
-        //x_rotation = t.localEulerAngles.x;      // get current x and y rotations
-        //y_rotation = t.localEulerAngles.y;
-
         Team = 1;
-
-        if (Cursor.lockState != CursorLockMode.Locked)   // if we haven't already, lock the cursor
-        {
-            lock_cursor();
-        }
     }
 
     // Update is called once per frame
@@ -83,24 +75,21 @@ public class Controller_Mouselook : MonoBehaviour
             Team = 4;
         }
 
-        
-        
+        if(old_team != Team)
+        {
+            GetComponent<AudioSource>().PlayOneShot(sound, 1f);
+        }       
     }
 
- /*   public void Rot_Store(int team)
-    {
-        team_rot[team - 1] = rot;
-    }
-
-    private void rot_load(int team)
-    {
-        t.rotation = team_rot[team - 1];
-    }
-*/
     //Locks the cursor
     public void lock_cursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void Unlock_cursor()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
 }
