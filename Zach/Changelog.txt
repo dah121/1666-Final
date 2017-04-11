@@ -19,3 +19,4 @@ TODO:
 -- Added ID render layer and moved the ID bubble on the tower prefabs to it (towers were clipping through each other, maybe remove when models are added)
 -- Added 9-sliced team indicators to cameras (Images found under _UI folder)
 -- Changed Tower_Movement_Listener to display active team indicator and play team change sound effect
+-- Added new font
