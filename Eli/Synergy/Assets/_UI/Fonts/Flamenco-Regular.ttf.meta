@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: f1b0f19e63ed52e4fa2af574e4e6949a
+timeCreated: 1491903233
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Flamenco
+  fontNames:
+  - Flamenco
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 4813bfe4ae1819d469dc29f9ffaa2dd7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
