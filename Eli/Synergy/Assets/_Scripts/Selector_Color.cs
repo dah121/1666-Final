@@ -19,7 +19,7 @@ public class Selector_Color : MonoBehaviour {
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit))
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 3f, ~(1<<10)))
         { 
             if (hit.collider.gameObject.layer == 9)
                 current = RedMat;

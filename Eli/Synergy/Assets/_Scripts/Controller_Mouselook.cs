@@ -10,8 +10,8 @@ public class Controller_Mouselook : MonoBehaviour
     private float current_mouse_x, current_mouse_y;
     private float x_rotation, y_rotation;
     public int Team;
-    private float[] team_x = new float[4];
-    private float[] team_y = new float[4];
+    private float[] team_x = {0f, 0f, 0f, 0f};
+    private float[] team_y = {0f, 90f, 180f, 270f};
     public float Sensitivity = 100f;
     public AudioClip sound;
 
@@ -20,12 +20,21 @@ public class Controller_Mouselook : MonoBehaviour
     {
         t = transform;
 
-        for (int i = 0; i<4; i++)
-        {
-            team_x[i] = t.localEulerAngles.x;
-            team_y[i]= t.localEulerAngles.y;
-        }
+        /*        for (int i = 0; i < 4; i++)
+                {
+                    if (i == 0)
+                        t.rotation = Quaternion.Euler(0f, 0f, 0f);
+                    else if (i == 1)
+                        t.rotation = Quaternion.Euler(0f, 90f, 0f);
+                    else if (i == 2)
+                        t.rotation = Quaternion.Euler(0f, 180f, 0f);
+                    else if (i == 3)
+                        t.rotation = Quaternion.Euler(0f, 270f, 0f);
 
+                    team_x[i] = t.localEulerAngles.x;
+                    team_y[i] = t.localEulerAngles.y;
+                }
+        */
         Team = 1;
     }
 

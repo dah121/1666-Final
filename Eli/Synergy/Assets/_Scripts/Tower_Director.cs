@@ -23,6 +23,7 @@ public class Tower_Director : MonoBehaviour {
     public void Add_Tower(GameObject tower)
     {
         Towers_Master.Add(tower);
+        reset_posititons(tower);
     }
 
     public void Remove_Tower(GameObject tower)
@@ -55,7 +56,7 @@ public class Tower_Director : MonoBehaviour {
             Towers_Master[i].GetComponentInChildren<Camera>().enabled = false;
             Towers_Master[i].GetComponentInChildren<Tower_Movement_Listener>().enabled = false;
             Towers_Master[i].GetComponentInChildren<Tower_Attack>().enabled = false;
-            Towers_Master[i].transform.rotation = Quaternion.identity;
+            reset_posititons(Towers_Master[i]);
         }
 
         Shot_Noise.enabled = false;
@@ -63,6 +64,21 @@ public class Tower_Director : MonoBehaviour {
         Rounds_Cam.gameObject.SetActive(false);
         Lives_Cam.gameObject.SetActive(false);
         Destroy(Spawner);
+    }
+
+    private void reset_posititons(GameObject tower)
+    {
+        int team = tower.GetComponent<Tower_Movement_Listener>().Twr_Team;
+        Transform t = tower.transform;
+
+        if (team == 0)
+            t.rotation = Quaternion.Euler(0f, 0f, 0f);
+        else if (team == 1)
+            t.rotation = Quaternion.Euler(0f, 90f, 0f);
+        else if (team == 2)
+            t.rotation = Quaternion.Euler(0f, 180f, 0f);
+        else if (team == 3)
+            t.rotation = Quaternion.Euler(0f, 270f, 0f);
     }
 
     public void Divide_Screen()

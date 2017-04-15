@@ -11,6 +11,7 @@ public class Tower_Builder : MonoBehaviour
     private RaycastHit hit;
     private int layerMask;
     private static float timer;
+    private int place_on_team;
 
     // Use this for initialization
     void Start()
@@ -19,6 +20,8 @@ public class Tower_Builder : MonoBehaviour
         Director = controller_object.GetComponent<Tower_Director>();
         Control = controller_object.GetComponent<GameControl>();
         timer = 0;
+        place_on_team = 1;
+
         //layerMask = (1 << 8);
         layerMask |= (1 << 9);
         layerMask |= (1 << 10);
@@ -28,14 +31,25 @@ public class Tower_Builder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.Alpha1))
+            place_on_team = 1;
+        else if (Input.GetKey(KeyCode.Alpha2))
+            place_on_team = 2;
+        else if (Input.GetKey(KeyCode.Alpha3))
+            place_on_team = 3;
+        else if (Input.GetKey(KeyCode.Alpha4))
+            place_on_team = 4;
+
         if (Input.GetMouseButtonDown(0) && timer <= 0)
         {
             timer = .5f;
             if (Physics.Raycast(transform.position, -Vector3.up, out hit, 3f, layerMask))
             {
-                if (hit.collider.gameObject.layer != 8 && Control.gold >= 50)       //Change to reflect actual price later
+                //Debug.Log(hit.collider.gameObject.layer);
+                if ((hit.collider.gameObject.layer != 12 && hit.collider.gameObject.layer != 8) && Control.gold >= 50)       //Change to reflect actual price later
                 {
                     GameObject tower = Instantiate(Tower_Prefab, new Vector3(transform.position.x, 1f, transform.position.z), Quaternion.identity) as GameObject;
+                    tower.GetComponent<Tower_Movement_Listener>().Twr_Team = place_on_team;
                     Director.Add_Tower(tower);
                     Control.gold -= 50;         //Change to reflect actual price later
                 }

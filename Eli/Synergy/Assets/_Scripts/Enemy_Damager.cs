@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //Zach
 
@@ -10,15 +11,14 @@ public class Enemy_Damager : MonoBehaviour {
     public float speed;
     public float min_speed;
     public float synergy_timer;
+    public Image healthBar;
 
     private float default_speed; //Don't know if needed yet
     private float default_timer; //Definitely needed
     private Queue<GameObject> sources;
     private Queue<GameObject> synergized_sources;
+    private float healthMod;
 
-    private bool damaged;
-    private float damaged_timer;
-    private Color default_color;
 	// Use this for initialization
 	void Start () {
         health = 100;
@@ -26,9 +26,7 @@ public class Enemy_Damager : MonoBehaviour {
         default_timer = synergy_timer;
         sources = new Queue<GameObject>();
         synergized_sources = new Queue<GameObject>();
-        damaged = false;
-        damaged_timer = .5f;
-        default_color = transform.GetChild(0).GetComponent<Renderer>().material.color;
+        healthMod = health; //set healthMod to health so if enemies have different starting healths their healthBar scales correctly when taking dmg.
 	}
 	
 	// Update is called once per frame
@@ -63,18 +61,6 @@ public class Enemy_Damager : MonoBehaviour {
         {
             KillEnemy();
         }
-
-        if(damaged && damaged_timer <= 0)
-        {
-            transform.GetChild(0).GetComponent<Renderer>().material.color = default_color;
-            damaged_timer = .5f;
-            damaged = false;
-        }
-        else if(damaged && damaged_timer > 0)
-        {
-            transform.GetChild(0).GetComponent<Renderer>().material.color = Color.red;
-            damaged_timer -= Time.deltaTime;
-        }
 	}
 
     public void SendSource(GameObject source)
@@ -106,7 +92,7 @@ public class Enemy_Damager : MonoBehaviour {
     private void Damage(float damage)
     {
         health -= damage;
-        damaged = true;
+        healthBar.fillAmount = health / healthMod;
     }
 
     private void Slow(float slow)

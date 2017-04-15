@@ -12,7 +12,7 @@ public class Tower_Movement_Listener : MonoBehaviour
     public Material Team_1_Mat, Team_2_Mat, Team_3_Mat, Team_4_Mat;
     private Image image; //Zach - for screen overlays
     public Sprite T1, T1A, T2, T2A, T3, T3A, T4, T4A; //Zach - for screen overlays
-    public int Twr_Team;
+    public int Twr_Team = 0;
 
     // Use this for initialization
     void Start()
@@ -21,30 +21,31 @@ public class Tower_Movement_Listener : MonoBehaviour
         Controller = GameObject.Find("Tower Controller");
         t = transform;
 
-        Twr_Team = Random.Range(1, 5);
-
         if (Twr_Team == 1)
         {
             ID_Band.GetComponent<Renderer>().material = Team_1_Mat;
             image.sprite = T1;
+            t.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
         else if (Twr_Team == 2)
         {
             ID_Band.GetComponent<Renderer>().material = Team_2_Mat;
             image.sprite = T2;
+            t.rotation = Quaternion.Euler(0f, 90f, 0f);
         }
         else if (Twr_Team == 3)
         {
             ID_Band.GetComponent<Renderer>().material = Team_3_Mat;
             image.sprite = T3;
+            t.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
         else if (Twr_Team == 4)
         {
             ID_Band.GetComponent<Renderer>().material = Team_4_Mat;
             image.sprite = T4;
+            t.rotation = Quaternion.Euler(0f, 270f, 0f);
         }
-
-
+        this.enabled = false;
     }
 
     // Update is called once per frame
@@ -89,6 +90,30 @@ public class Tower_Movement_Listener : MonoBehaviour
             {
                 image.sprite = T4;
             }
+        }
+    }
+
+    public void update_materials()
+    {
+        if (Twr_Team == 1)
+        {
+            ID_Band.GetComponent<Renderer>().material = Team_1_Mat;
+            t.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+        else if (Twr_Team == 2)
+        {
+            ID_Band.GetComponent<Renderer>().material = Team_2_Mat;
+            t.rotation = Quaternion.Euler(0f, 90f, 0f);
+        }
+        else if (Twr_Team == 3)
+        {
+            ID_Band.GetComponent<Renderer>().material = Team_3_Mat;
+            t.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+        else if (Twr_Team == 4)
+        {
+            ID_Band.GetComponent<Renderer>().material = Team_4_Mat;
+            t.rotation = Quaternion.Euler(0f, 270f, 0f);
         }
     }
 }
