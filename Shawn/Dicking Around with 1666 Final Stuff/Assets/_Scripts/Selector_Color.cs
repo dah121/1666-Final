@@ -6,6 +6,7 @@ public class Selector_Color : MonoBehaviour {
 
     public Material GreenMat;
     public Material RedMat;
+    public GameControl Control;
     private Material current;
     
     // Use this for initialization
@@ -24,6 +25,11 @@ public class Selector_Color : MonoBehaviour {
                 current = RedMat;
             else
                 current = GreenMat;
+        }
+
+        if (Control.gold < 50)      //Change to reflect price
+        {
+            current = RedMat;
         }
 
         gameObject.GetComponentInChildren<Renderer>().material = current;

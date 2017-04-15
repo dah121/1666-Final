@@ -6,6 +6,9 @@ public class Tower_Director : MonoBehaviour {
 
     private List<GameObject> Towers_Master;
     public Camera Minimap_Cam, Rounds_Cam, Lives_Cam;
+    public Shooty_Noise Shot_Noise;
+    //public GameObject Spawn_Logic;
+    //private GameObject Spawner;
 
 	// Use this for initialization
 	void Start () {
@@ -36,9 +39,13 @@ public class Tower_Director : MonoBehaviour {
             Towers_Master[i].GetComponentInChildren<Tower_Attack>().enabled = true;
         }
 
+        Shot_Noise.enabled = true;
         Minimap_Cam.gameObject.SetActive(true);
         Rounds_Cam.gameObject.SetActive(true);
         Lives_Cam.gameObject.SetActive(true);
+
+        //Spawner = Instantiate(Spawn_Logic, transform) as GameObject;
+       // Spawner.SetActive(true);
     }
 
     public void Deactivate_Towers()
@@ -50,9 +57,12 @@ public class Tower_Director : MonoBehaviour {
             Towers_Master[i].GetComponentInChildren<Tower_Attack>().enabled = false;
             Towers_Master[i].transform.rotation = Quaternion.identity;
         }
+
+        Shot_Noise.enabled = false;
         Minimap_Cam.gameObject.SetActive(false);
         Rounds_Cam.gameObject.SetActive(false);
         Lives_Cam.gameObject.SetActive(false);
+        //Destroy(Spawner);
     }
 
     public void Divide_Screen()

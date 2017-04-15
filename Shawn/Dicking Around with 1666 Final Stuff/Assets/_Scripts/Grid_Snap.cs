@@ -20,9 +20,14 @@ public class Grid_Snap : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(r, out hit))
-        {   
+        {
             snap_x = hit.transform.position.x;
             snap_z = hit.transform.position.z;
+        }
+        else
+        {
+            snap_x = 0.5f;
+            snap_z = -1f;
         }
 
         transform.position = new Vector3(snap_x, 2f, snap_z);
