@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //Zach
 
@@ -10,11 +11,13 @@ public class Enemy_Damager : MonoBehaviour {
     public float speed;
     public float min_speed;
     public float synergy_timer;
+    public Image healthBar;
 
     private float default_speed; //Don't know if needed yet
     private float default_timer; //Definitely needed
     private Queue<GameObject> sources;
     private Queue<GameObject> synergized_sources;
+    private float healthMod;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +26,7 @@ public class Enemy_Damager : MonoBehaviour {
         default_timer = synergy_timer;
         sources = new Queue<GameObject>();
         synergized_sources = new Queue<GameObject>();
+        healthMod = health; //set healthMod to health so if enemies have different starting healths their healthBar scales correctly when taking dmg.
 	}
 	
 	// Update is called once per frame
@@ -88,6 +92,7 @@ public class Enemy_Damager : MonoBehaviour {
     private void Damage(float damage)
     {
         health -= damage;
+        healthBar.fillAmount = health / healthMod;
     }
 
     private void Slow(float slow)
