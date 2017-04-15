@@ -10,4 +10,9 @@ public class LoadSceneOnClick : MonoBehaviour {
         //put into OnClick of the button, choose the function and scene number to load
         SceneManager.LoadScene(sceneIndex);
     }
+
+    public void LoadByName(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
 }
