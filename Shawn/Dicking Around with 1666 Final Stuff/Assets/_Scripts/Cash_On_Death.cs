@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cash_On_Death : MonoBehaviour {
+public class Cash_On_Death : MonoBehaviour
+{
 
- //   private GameControl Controller;
+    private GameControl Controller;
 
-	//// Use this for initialization
-	//void Start () {
- //       Controller = GameObject.Find("Tower Controller").GetComponent<GameControl>();
-	//}
-	
-	//// Update is called once per frame
-	//void Update () {
-		
-	//}
+    // Use this for initialization
+    void Start()
+    {
+        Controller = GameObject.Find("Tower Controller").GetComponent<GameControl>();
+    }
 
- //   private void OnDestroy()
- //   {
- //       Controller.gold += 25;
- //   }
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    private void OnDestroy()
+    {
+        Controller.gold += 25;
+    }
 }

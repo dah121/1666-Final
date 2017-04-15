@@ -85,22 +85,24 @@ public class Wave_Spawner : MonoBehaviour
         }
         else
         {
-            Debug.Log(WaveSizes[WaveIndex]);
 
-            for (int i = 0; i < WaveSizes[WaveIndex++]; i++)
+            bool first = true;
+            for (int i = 0; i < WaveSizes[WaveIndex]; i++)
             {
                 Debug.Log("EIndex: " + EnemyIndex);
                 Debug.Log("Chosen: " + Enemies[EnemyIndex]);
-                //Debug.Log("Ene")
                 Prototype_Nav enemy = Instantiate(EnemyTypes[Enemies[EnemyIndex++]], StartLoc.position, StartLoc.rotation);
-                if (enemy)
-                {
-                    Debug.Log("Enemy spawned");
-                }
                 enemy.StartWave(EndLoc.position);
                 currentWaveUnits.Add(enemy);
+                if (first)  //Hack because the first enemy dies instantly :(
+                {
+                    first = false;
+                    i--;
+                    EnemyIndex--;
+                }
                 yield return new WaitForSeconds(2);
             }
+            WaveIndex++;
 
         }
 

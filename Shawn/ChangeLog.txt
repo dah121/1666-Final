@@ -1,0 +1,10 @@
+4/15
+
+Renamed WaveSpawner to Wave_Spawner
+Added multiple wave functionality
+Added multiple enemy type support
+Attached script to "UI Canvas"."Button"
+Added Wave_Spawner.Launch to OnClick()
+Removed button's own GameObject.SetActive(False) from OnClick()
+Added Button.<Component>Button.enabled(False) at the end of OnClick()
+Removed old WaveSpawner game object
