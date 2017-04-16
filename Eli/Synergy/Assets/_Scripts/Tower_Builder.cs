@@ -13,9 +13,15 @@ public class Tower_Builder : MonoBehaviour
     private static float timer;
     public int place_on_team;
 
+	//Zach - For place tower sound effect
+	private AudioSource AS;
+	public AudioClip clip;
+
     // Use this for initialization
     void Start()
     {
+		AS = GameObject.Find ("Shot Audio").gameObject.GetComponent<AudioSource> ();
+
         GameObject controller_object = GameObject.Find("Tower Controller");
         Director = controller_object.GetComponent<Tower_Director>();
         Control = controller_object.GetComponent<GameControl>();
@@ -40,6 +46,8 @@ public class Tower_Builder : MonoBehaviour
                 //Debug.Log(hit.collider.gameObject.layer);
                 if ((hit.collider.gameObject.layer != 12 && hit.collider.gameObject.layer != 8) && Control.gold >= 50)       //Change to reflect actual price later
                 {
+					//Play sound Effect
+					AS.PlayOneShot(clip, .8f);
                     GameObject tower = Instantiate(Tower_Prefab, new Vector3(transform.position.x, 1f, transform.position.z), Quaternion.identity) as GameObject;
                     tower.GetComponent<Tower_Movement_Listener>().Twr_Team = place_on_team;
                     Director.Add_Tower(tower);

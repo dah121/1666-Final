@@ -8,10 +8,15 @@ public class Tower_Director : MonoBehaviour {
     public Camera Minimap_Cam, Rounds_Cam, Lives_Cam;
     public Shooty_Noise Shot_Noise;
     public GameObject Spawn_Logic;
-    private GameObject Spawner;
 
-	// Use this for initialization
-	void Start () {
+    //Eli Added these to automate round beginning and ending
+    public GameObject Sel;
+    public GameObject NextWaveButton;
+    public GameObject ShopButton;
+    public GameObject Compass;
+
+    // Use this for initialization
+    void Start () {
         Towers_Master = new List<GameObject>();
 	}
 	
@@ -46,9 +51,6 @@ public class Tower_Director : MonoBehaviour {
         Lives_Cam.gameObject.SetActive(true);
 
         gameObject.GetComponent<Team_Assignment>().enabled = false;
-
-        Spawner = Instantiate(Spawn_Logic, transform) as GameObject;
-        Spawner.SetActive(true);
     }
 
     public void Deactivate_Towers()
@@ -67,7 +69,7 @@ public class Tower_Director : MonoBehaviour {
         Minimap_Cam.gameObject.SetActive(false);
         Rounds_Cam.gameObject.SetActive(false);
         Lives_Cam.gameObject.SetActive(false);
-        Destroy(Spawner);
+
     }
 
     private void reset_posititons(GameObject tower)
@@ -75,13 +77,13 @@ public class Tower_Director : MonoBehaviour {
         int team = tower.GetComponent<Tower_Movement_Listener>().Twr_Team;
         Transform t = tower.transform;
 
-        if (team == 0)
+        if (team == 1)
             t.rotation = Quaternion.Euler(0f, 0f, 0f);
-        else if (team == 1)
-            t.rotation = Quaternion.Euler(0f, 90f, 0f);
         else if (team == 2)
-            t.rotation = Quaternion.Euler(0f, 180f, 0f);
+            t.rotation = Quaternion.Euler(0f, 90f, 0f);
         else if (team == 3)
+            t.rotation = Quaternion.Euler(0f, 180f, 0f);
+        else if (team == 4)
             t.rotation = Quaternion.Euler(0f, 270f, 0f);
     }
 
@@ -112,5 +114,27 @@ public class Tower_Director : MonoBehaviour {
         Minimap_Cam.rect = new Rect(0.33f, 0.33f, 0.34f, 0.34f);
         Rounds_Cam.rect = new Rect(.67f, .33f, .33f, .34f);
 
+    }
+
+    public void Begin_Wave()
+    {
+        Activate_Towers();
+        Divide_Screen();
+        gameObject.GetComponent<Controller_Mouselook>().lock_cursor();
+        Sel.SetActive(false);
+        NextWaveButton.SetActive(false);
+        ShopButton.SetActive(false);
+        Compass.SetActive(false);
+        Spawn_Logic.GetComponent<Wave_Spawner>().BeginWave();
+    }
+
+    public void End_Wave()
+    {
+        Deactivate_Towers();
+        Sel.SetActive(false);
+        NextWaveButton.SetActive(true);
+        ShopButton.SetActive(true);
+        Compass.SetActive(true);
+        gameObject.GetComponent<Controller_Mouselook>().unlock_cursor();
     }
 }

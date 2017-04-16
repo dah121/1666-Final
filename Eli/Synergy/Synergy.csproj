@@ -76,17 +76,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Sharp Text Mesh\Script\SharpText.cs" />
-    <Compile Include="Assets\Text_Controller.cs" />
     <Compile Include="Assets\_Scripts\Aim.cs" />
     <Compile Include="Assets\_Scripts\Beam_Effect.cs" />
     <Compile Include="Assets\_Scripts\Cash_On_Death.cs" />
+    <Compile Include="Assets\_Scripts\Compass_Selector.cs" />
+    <Compile Include="Assets\_Scripts\Completed_Tasks.cs" />
     <Compile Include="Assets\_Scripts\Controller_Mouselook.cs" />
     <Compile Include="Assets\_Scripts\Enemy_Damager.cs" />
+    <Compile Include="Assets\_Scripts\FadingAudioSource.cs" />
     <Compile Include="Assets\_Scripts\GameControl.cs" />
     <Compile Include="Assets\_Scripts\Grid_Snap.cs" />
     <Compile Include="Assets\_Scripts\Kill_Enemy_Tester.cs" />
+    <Compile Include="Assets\_Scripts\Lives_Tracker.cs" />
     <Compile Include="Assets\_Scripts\LoadSceneOnClick.cs" />
     <Compile Include="Assets\_Scripts\Minimap_Synergy.cs" />
+    <Compile Include="Assets\_Scripts\Music_Start.cs" />
     <Compile Include="Assets\_Scripts\Prototype_Nav.cs" />
     <Compile Include="Assets\_Scripts\QuitOnClick.cs" />
     <Compile Include="Assets\_Scripts\Random_Enemy_Text.cs" />
@@ -94,6 +98,7 @@
     <Compile Include="Assets\_Scripts\Shooty_Noise.cs" />
     <Compile Include="Assets\_Scripts\Shop_Button.cs" />
     <Compile Include="Assets\_Scripts\Team_Assignment.cs" />
+    <Compile Include="Assets\_Scripts\Text_Controller.cs" />
     <Compile Include="Assets\_Scripts\Tower_Attack.cs" />
     <Compile Include="Assets\_Scripts\Tower_Builder.cs" />
     <Compile Include="Assets\_Scripts\Tower_Director.cs" />
