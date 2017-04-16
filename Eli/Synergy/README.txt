@@ -27,4 +27,4 @@ I have a script where I tried to make the directional beams light up on the mini
 
 I just found out that if you export everything in someone's project as a UnityPackage (Assets>Export Package...) and then import it into your own project, it will add things your project doesn't have from the package, update things that have changed, and ignore things that are already in your project.
 It seems like the best way to add other peoples' functionalities to your project 
-I'm not including a UnityPackage because it's just extra space but you can export right from the editor
+I'm including a UnityPackage of the project in this repository. if you're using the "Synergy" project it SHOULD in theory get you up to date

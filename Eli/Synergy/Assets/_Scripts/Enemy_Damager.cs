@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//Zach
-
 public class Enemy_Damager : MonoBehaviour {
 
     public float health;
@@ -19,10 +17,13 @@ public class Enemy_Damager : MonoBehaviour {
     private Queue<GameObject> synergized_sources;
     private float healthMod;
 
+	private UnityEngine.AI.NavMeshAgent navmesh;
+
 	Wave_Spawner ws; //Zach
 
 	// Use this for initialization
 	void Start () {
+		navmesh = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent> ();
         health = 100;
         default_speed = speed;
         default_timer = synergy_timer;
@@ -100,11 +101,7 @@ public class Enemy_Damager : MonoBehaviour {
 
     private void Slow(float slow)
     {
-        speed -= slow;
-        if (speed < min_speed)
-        {
-            speed = min_speed;
-        }
+		StartCoroutine (SlowCo(slow));
     }
 
     private void KillEnemy()
@@ -114,6 +111,16 @@ public class Enemy_Damager : MonoBehaviour {
         StopAllCoroutines();
         Destroy(gameObject);
     }
+
+	IEnumerator SlowCo(float slow)
+	{
+		navmesh.speed -= slow;
+		if (speed < min_speed) {
+			navmesh.speed = min_speed;
+		}
+		yield return new WaitForSeconds (3);
+		navmesh.speed += slow;
+	}
 
     IEnumerator DamageOverTime(float damage, float rate, float length)
     {

@@ -48,7 +48,7 @@ public class Tower_Builder : MonoBehaviour
                 {
 					//Play sound Effect
 					AS.PlayOneShot(clip, .8f);
-                    GameObject tower = Instantiate(Tower_Prefab, new Vector3(transform.position.x, 1f, transform.position.z), Quaternion.identity) as GameObject;
+                    GameObject tower = Instantiate(Tower_Prefab, new Vector3(transform.position.x, 0f, transform.position.z), Quaternion.identity) as GameObject;
                     tower.GetComponent<Tower_Movement_Listener>().Twr_Team = place_on_team;
                     Director.Add_Tower(tower);
                     Control.gold -= 50;         //Change to reflect actual price later
