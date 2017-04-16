@@ -10,9 +10,11 @@ public class Wave_Spawner : MonoBehaviour
 
     //Eli Added this for Task Generation
     public Random_Enemy_Text txt;
+    //Eli Added this to make the Lives counter Work
+    public Lives_Tracker lives_track;
     public Prototype_Nav Guy;
     public int WaveSize;
-    public int CurrentLives;
+    public float WaveRate;    //Eli Added this for the Set_Wave_Stats() function. Delay between enemies in seconds.
     public Text LivesText;
 
 	//Zach added this for Background Music
@@ -28,6 +30,7 @@ public class Wave_Spawner : MonoBehaviour
     void Start()
     {
 		music = GameObject.Find ("Music Audio Source").GetComponent<FadingAudioSource> ();
+        lives_track = gameObject.GetComponent<Lives_Tracker>();
 		shopPlaying = false;
 		music.Fade (shopMusic, 1f, true);
         currentWaveUnits = new List<Prototype_Nav>();
@@ -55,9 +58,7 @@ public class Wave_Spawner : MonoBehaviour
             if (enemy.Agent.remainingDistance != 0 && enemy.Agent.remainingDistance < .1f)
             {
 				waveLeft--;
-                Destroy(enemy.gameObject);
                 currentWaveUnits.RemoveAt(i);
-                CurrentLives--;
             }
         }
 
@@ -67,15 +68,16 @@ public class Wave_Spawner : MonoBehaviour
 			music.Fade (shopMusic, 1f, true);
 		}
 
-        if (CurrentLives > 0)
-            LivesText.text = "Lives: " + CurrentLives;
-        else
-            LivesText.text = "You Lose!";
+        //if (CurrentLives > 0)
+
+        //else
+          //  LivesText.text = "You Lose!";
 
     }
 
 	private void EndWave()
 	{
+        txt.gameObject.GetComponent<Tower_Director>().End_Wave();
 		shopPlaying = true;
 		music.Fade (shopMusic, 1f, true);
 
@@ -90,11 +92,18 @@ public class Wave_Spawner : MonoBehaviour
         for (int i = 0; i < WaveSize; i++)
         {
             Prototype_Nav enemy = Instantiate(Guy, StartLoc.position, StartLoc.rotation);
+            enemy.lives = lives_track;
             txt.Get_Random_Pair(enemy.gameObject);
             enemy.StartWave(EndLoc.position);
             currentWaveUnits.Add(enemy);
             yield return new WaitForSeconds(2);
         }
 
+    }
+
+    public void Set_Wave_Stats(int num_Enemies, float rate)
+    {
+        WaveSize = num_Enemies;
+        WaveRate = rate;
     }
 }

@@ -96,9 +96,9 @@ public class Controller_Mouselook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void Unlock_cursor()
+    public void unlock_cursor()
     {
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
     }
 
 }

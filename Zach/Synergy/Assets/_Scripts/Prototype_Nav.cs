@@ -7,6 +7,7 @@ public class Prototype_Nav : MonoBehaviour {
 
     public Transform Destination;
     public NavMeshAgent Agent;
+    public Lives_Tracker lives;
 
 	// Use this for initialization
 	void Start ()
@@ -16,12 +17,18 @@ public class Prototype_Nav : MonoBehaviour {
 
     public void StartWave(Vector3 dest)
     {
-        Agent = this.GetComponent<NavMeshAgent>();
+        if (Agent == null)
+            Agent = this.GetComponent<NavMeshAgent>();
         Agent.destination = dest;
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (this.Agent.remainingDistance != 0 && this.Agent.remainingDistance < .1f)
+        {
+            gameObject.GetComponent<Cash_On_Death>().reached_end = true;
+            Destroy(gameObject);
+            lives.Decrement_Lives();
+        }
+    }
 }
