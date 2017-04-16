@@ -75,7 +75,7 @@ public class Wave_Spawner : MonoBehaviour
 	private void EndWave()
 	{
 		shopPlaying = true;
-		Music_Start.Fade (shopMusic, 1f, true);
+		music.Fade (shopMusic, 1f, true);
 
 		//Automatically return to shop menu
 	}
