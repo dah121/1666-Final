@@ -11,7 +11,7 @@ public class Tower_Builder : MonoBehaviour
     private RaycastHit hit;
     private int layerMask;
     private static float timer;
-    private int place_on_team;
+    public int place_on_team;
 
     // Use this for initialization
     void Start()
@@ -31,15 +31,6 @@ public class Tower_Builder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha1))
-            place_on_team = 1;
-        else if (Input.GetKey(KeyCode.Alpha2))
-            place_on_team = 2;
-        else if (Input.GetKey(KeyCode.Alpha3))
-            place_on_team = 3;
-        else if (Input.GetKey(KeyCode.Alpha4))
-            place_on_team = 4;
-
         if (Input.GetMouseButtonDown(0) && timer <= 0)
         {
             timer = .5f;

@@ -8,6 +8,8 @@ public class Wave_Spawner : MonoBehaviour
     public Transform StartLoc;
     public Transform EndLoc;
 
+    //Eli Added this for Task Generation
+    public Random_Enemy_Text txt;
     public Prototype_Nav Guy;
     public int WaveSize;
     public int CurrentLives;
@@ -54,6 +56,7 @@ public class Wave_Spawner : MonoBehaviour
         for (int i = 0; i < WaveSize; i++)
         {
             Prototype_Nav enemy = Instantiate(Guy, StartLoc.position, StartLoc.rotation);
+            txt.Get_Random_Pair(enemy.gameObject);
             enemy.StartWave(EndLoc.position);
             currentWaveUnits.Add(enemy);
             yield return new WaitForSeconds(2);

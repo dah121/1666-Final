@@ -45,6 +45,8 @@ public class Tower_Director : MonoBehaviour {
         Rounds_Cam.gameObject.SetActive(true);
         Lives_Cam.gameObject.SetActive(true);
 
+        gameObject.GetComponent<Team_Assignment>().enabled = false;
+
         Spawner = Instantiate(Spawn_Logic, transform) as GameObject;
         Spawner.SetActive(true);
     }
@@ -58,6 +60,8 @@ public class Tower_Director : MonoBehaviour {
             Towers_Master[i].GetComponentInChildren<Tower_Attack>().enabled = false;
             reset_posititons(Towers_Master[i]);
         }
+
+        gameObject.GetComponent<Team_Assignment>().enabled = true;
 
         Shot_Noise.enabled = false;
         Minimap_Cam.gameObject.SetActive(false);

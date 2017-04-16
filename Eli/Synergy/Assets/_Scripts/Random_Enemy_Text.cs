@@ -37,13 +37,13 @@ public class Random_Enemy_Text : MonoBehaviour {
 		
 	}
 
-    public void Get_Random_Pair()
+    public void Get_Random_Pair(GameObject enemy)
     {
         int noun = Random.Range(0, Noun_Count);
         int verb = Random.Range(0, Verb_Count);
 
-        string result = Verbs[verb] + " " + Nouns[noun];
-        Debug.Log(result);
+        string result = Verbs[verb] + "\n" + Nouns[noun];
+        enemy.GetComponent<Text_Controller>().task_Name = result;
     }
 
 

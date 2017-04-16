@@ -19,6 +19,7 @@ public class Team_Assignment : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.Alpha1))
         {
+            Selector.GetComponent<Tower_Builder>().place_on_team = 1;
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit;
@@ -32,6 +33,7 @@ public class Team_Assignment : MonoBehaviour {
         }
         else if (Input.GetKey(KeyCode.Alpha2))
         {
+            Selector.GetComponent<Tower_Builder>().place_on_team = 2;
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit;
@@ -45,6 +47,7 @@ public class Team_Assignment : MonoBehaviour {
         }
         else if (Input.GetKey(KeyCode.Alpha3))
         {
+            Selector.GetComponent<Tower_Builder>().place_on_team = 3;
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit;
@@ -58,6 +61,7 @@ public class Team_Assignment : MonoBehaviour {
         }
         else if (Input.GetKey(KeyCode.Alpha4))
         {
+            Selector.GetComponent<Tower_Builder>().place_on_team = 4;
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit;
