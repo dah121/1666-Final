@@ -15,14 +15,29 @@ public class Wave_Spawner : MonoBehaviour
     public int CurrentLives;
     public Text LivesText;
 
+	//Zach added this for Background Music
+	private FadingAudioSource music;
+	public AudioClip shopMusic;
+	public AudioClip battleMusic;
+	public bool shopPlaying;
+	public int waveLeft; //Amount of enemies left. Enemy_Damager.KillEnemy() decrements this amount
+
     private List<Prototype_Nav> currentWaveUnits = null;
 
     // Use this for initialization
     void Start()
     {
+		music = GameObject.Find ("Music Audio Source").GetComponent<FadingAudioSource> ();
+		shopPlaying = false;
+		music.Fade (shopMusic, 1f, true);
         currentWaveUnits = new List<Prototype_Nav>();
-        StartCoroutine(StartWave());
+        //StartCoroutine(StartWave());
     }
+
+	public void BeginWave()
+	{
+		StartCoroutine (StartWave ());
+	}
 
     // Update is called once per frame
     void Update()
@@ -44,6 +59,12 @@ public class Wave_Spawner : MonoBehaviour
             }
         }
 
+		if (!shopPlaying && waveLeft == 0) {
+			EndWave ();
+			shopPlaying = true;
+			music.Fade (shopMusic, 1f, true);
+		}
+
         if (CurrentLives > 0)
             LivesText.text = "Lives: " + CurrentLives;
         else
@@ -51,8 +72,19 @@ public class Wave_Spawner : MonoBehaviour
 
     }
 
+	private void EndWave()
+	{
+		shopPlaying = true;
+		Music_Start.Fade (shopMusic, 1f, true);
+
+		//Automatically return to shop menu
+	}
+
     private IEnumerator StartWave()
     {
+		waveLeft = WaveSize - 1;
+		shopPlaying = false;
+		music.Fade (battleMusic, 1f, true);
         for (int i = 0; i < WaveSize; i++)
         {
             Prototype_Nav enemy = Instantiate(Guy, StartLoc.position, StartLoc.rotation);

@@ -32,3 +32,12 @@ TODO:
 -- Changed camera height on tower from .64 to -.4
    -- By default now is at enemy height on track
 -- Added place tower sound effect to tower_builder script
+-- Copied a FadingAudioSource script and attached it to the Music Audio Source Object
+   -- Switches between 2 tracks in buy and battle phases
+-- Adjusted Wave_Spawner script to play music
+   -- Enemy_Damager script decrements a waveLeft value - how many enemies are left
+-- Heavily adjusted Wave_Spawner
+   -- Always active, manually startWave() using button unityEvent
+   -- Added an EndWave() function when WaveLeft = 0;
+-- BROKE CASH ON DEATH SCRIPT FOR SOME REASON. DO NOT KNOW WHY
+   -- Commented out the script for now

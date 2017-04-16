@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Compass_Selector.cs" />
+     <Compile Include="Assets\FadingAudioSource.cs" />
+     <Compile Include="Assets\Music_Start.cs" />
      <Compile Include="Assets\Sharp Text Mesh\Script\SharpText.cs" />
      <Compile Include="Assets\Text_Controller.cs" />
      <Compile Include="Assets\_Scripts\Aim.cs" />

@@ -106,6 +106,8 @@ public class Enemy_Damager : MonoBehaviour {
 
     private void KillEnemy()
     {
+		Wave_Spawner ws = GameObject.Find ("Spawn Logic").GetComponent<Wave_Spawner> ();
+		ws.waveLeft--;
         StopAllCoroutines();
         Destroy(gameObject);
     }

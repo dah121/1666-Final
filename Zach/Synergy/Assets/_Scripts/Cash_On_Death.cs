@@ -21,6 +21,7 @@ public class Cash_On_Death : MonoBehaviour
 
     private void OnDestroy()
     {
-        Controller.gold += 25;
+		//Zach - Sorry, This doesn't work now for some reason
+        //Controller.gold += 25;
     }
 }
