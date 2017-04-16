@@ -24,3 +24,11 @@ TODO:
 4/13/17
 -- Added Main Menu UI
 -- Edited LoadSceneOnClick script to support loading by name
+
+4/16/17
+-- Added Compass to build phase UI. Created compass_selector script and attached it to UI Camera
+-- Changed main directional light from 1.3 to .7 intensity to better show textures
+-- Added carpet textures to main game area
+-- Changed camera height on tower from .64 to -.4
+   -- By default now is at enemy height on track
+-- Added place tower sound effect to tower_builder script
