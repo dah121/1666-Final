@@ -53,6 +53,7 @@ public class Wave_Spawner : MonoBehaviour
 
             if (enemy.Agent.remainingDistance < .1f)
             {
+				waveLeft--;
                 Destroy(enemy.gameObject);
                 currentWaveUnits.RemoveAt(i);
                 CurrentLives--;
@@ -82,7 +83,7 @@ public class Wave_Spawner : MonoBehaviour
 
     private IEnumerator StartWave()
     {
-		waveLeft = WaveSize - 1;
+		waveLeft = WaveSize;
 		shopPlaying = false;
 		music.Fade (battleMusic, 1f, true);
         for (int i = 0; i < WaveSize; i++)

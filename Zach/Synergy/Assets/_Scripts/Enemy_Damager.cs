@@ -19,6 +19,8 @@ public class Enemy_Damager : MonoBehaviour {
     private Queue<GameObject> synergized_sources;
     private float healthMod;
 
+	Wave_Spawner ws; //Zach
+
 	// Use this for initialization
 	void Start () {
         health = 100;
@@ -27,6 +29,7 @@ public class Enemy_Damager : MonoBehaviour {
         sources = new Queue<GameObject>();
         synergized_sources = new Queue<GameObject>();
         healthMod = health; //set healthMod to health so if enemies have different starting healths their healthBar scales correctly when taking dmg.
+		ws = GameObject.Find ("Spawn Logic").GetComponent<Wave_Spawner> ();
 	}
 	
 	// Update is called once per frame
@@ -106,7 +109,7 @@ public class Enemy_Damager : MonoBehaviour {
 
     private void KillEnemy()
     {
-		Wave_Spawner ws = GameObject.Find ("Spawn Logic").GetComponent<Wave_Spawner> ();
+		
 		ws.waveLeft--;
         StopAllCoroutines();
         Destroy(gameObject);

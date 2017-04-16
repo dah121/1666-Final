@@ -39,5 +39,6 @@ TODO:
 -- Heavily adjusted Wave_Spawner
    -- Always active, manually startWave() using button unityEvent
    -- Added an EndWave() function when WaveLeft = 0;
+-- LIVES ARE NOT COUNTING DOWN WHEN ENEMIES DIE
 -- BROKE CASH ON DEATH SCRIPT FOR SOME REASON. DO NOT KNOW WHY
    -- Commented out the script for now
