@@ -51,7 +51,8 @@ public class Wave_Spawner : MonoBehaviour
                 continue;
             }
 
-            if (enemy.Agent.remainingDistance < .1f)
+			//LIFE ALWAYS BEING LOST IMMEDIATELY IF FIRST ARGUMENT IS GONE
+            if (enemy.Agent.remainingDistance != 0 && enemy.Agent.remainingDistance < .1f)
             {
 				waveLeft--;
                 Destroy(enemy.gameObject);
