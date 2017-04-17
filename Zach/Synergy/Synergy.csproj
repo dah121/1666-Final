@@ -95,6 +95,7 @@
     <Compile Include="Assets\_Scripts\Prototype_Nav.cs" />
     <Compile Include="Assets\_Scripts\QuitOnClick.cs" />
     <Compile Include="Assets\_Scripts\Random_Enemy_Text.cs" />
+    <Compile Include="Assets\_Scripts\Rounds_Tracker.cs" />
     <Compile Include="Assets\_Scripts\Selector_Color.cs" />
     <Compile Include="Assets\_Scripts\Shooty_Noise.cs" />
     <Compile Include="Assets\_Scripts\Shop_Button.cs" />

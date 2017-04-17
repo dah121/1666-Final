@@ -125,6 +125,7 @@ public class Tower_Director : MonoBehaviour {
         NextWaveButton.SetActive(false);
         ShopButton.SetActive(false);
         Compass.SetActive(false);
+        gameObject.GetComponent<Rounds_Tracker>().Set_Round_Stats();
         Spawn_Logic.GetComponent<Wave_Spawner>().BeginWave();
     }
 
