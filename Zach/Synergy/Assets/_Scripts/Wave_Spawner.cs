@@ -98,7 +98,6 @@ public class Wave_Spawner : MonoBehaviour
             currentWaveUnits.Add(enemy);
             yield return new WaitForSeconds(2);
         }
-
     }
 
     public void Set_Wave_Stats(int num_Enemies, float rate)

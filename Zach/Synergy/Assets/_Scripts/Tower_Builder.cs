@@ -19,7 +19,9 @@ public class Tower_Builder : MonoBehaviour
 
 	//Zach - For place tower sound effect
 	private AudioSource AS;
-	public AudioClip clip;
+    public AudioClip BuildSound;
+	public AudioClip UpgradeSound;
+    public AudioClip SellSound;
 
     [HideInInspector]
     public GameObject Selected_Tower;
@@ -29,7 +31,7 @@ public class Tower_Builder : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		AS = GameObject.Find ("Shot Audio").gameObject.GetComponent<AudioSource> ();
+		AS = GameObject.Find ("Menu Audio Source").gameObject.GetComponent<AudioSource> ();
 
         GameObject controller_object = GameObject.Find("Tower Controller");
         Director = controller_object.GetComponent<Tower_Director>();
@@ -55,7 +57,7 @@ public class Tower_Builder : MonoBehaviour
                 if ((hit.collider.gameObject.layer != 12 && hit.collider.gameObject.layer != 8) && Control.gold >= 50)       //Change to reflect actual price later
                 {
 					//Play sound Effect
-					AS.PlayOneShot(clip, .8f);
+					AS.PlayOneShot(BuildSound, .8f);
                     GameObject tower = Instantiate(Tower_Prefab, new Vector3(transform.position.x, 0f, transform.position.z), Quaternion.identity) as GameObject;
                     tower.GetComponent<Tower_Movement_Listener>().Twr_Team = place_on_team;
                     Director.Add_Tower(tower);
@@ -87,6 +89,7 @@ public class Tower_Builder : MonoBehaviour
         if (Control.gold >= Selected_Tower.GetComponent<Tower_Economy>().Upgrade_Cost)
         {
             Selected_Tower.GetComponent<Tower_Economy>().Upgrade++;
+            AS.PlayOneShot(UpgradeSound, .85f);
             Upgrades_Setup();
         }
     }
@@ -94,6 +97,7 @@ public class Tower_Builder : MonoBehaviour
     {
         Control.gold += Selected_Tower.GetComponent<Tower_Economy>().Sell_Value;
         Director.Remove_Tower(Selected_Tower);
+        AS.PlayOneShot(SellSound, 1f);
         Destroy(Selected_Tower);
     }
 
