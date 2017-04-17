@@ -31,7 +31,7 @@ public class Tower_Builder : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		AS = GameObject.Find ("Menu Audio Source").gameObject.GetComponent<AudioSource> ();
+		AS = GameObject.Find ("Universal Audio Source").gameObject.GetComponent<AudioSource> ();
 
         GameObject controller_object = GameObject.Find("Tower Controller");
         Director = controller_object.GetComponent<Tower_Director>();

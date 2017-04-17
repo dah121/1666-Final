@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Compass_Selector : MonoBehaviour {
 	private Image image;
 	public Sprite T1, T2, T3, T4;
+    public GameObject Sel;
 
 	private GameObject controller;
 
@@ -17,7 +18,7 @@ public class Compass_Selector : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		int Twr_Team = controller.GetComponent<Controller_Mouselook>().Team;
+		int Twr_Team = Sel.GetComponent<Tower_Builder>().place_on_team;
 
 		if (Twr_Team == 1) {
 			image.sprite = T1;

@@ -13,10 +13,11 @@ public class Rounds_Tracker : MonoBehaviour {
     public Wave_Spawner spawner;
     public Text Rounds_Txt;
     public Text Compass_Rounds;
+    public string Filename;
 	
     // Use this for initialization
 	void Start () {
-        StreamReader round_reader = new StreamReader("Rounds.txt");
+        StreamReader round_reader = new StreamReader(Filename);
         Current_Round = 0;
 
         Num_Rounds = Int32.Parse(round_reader.ReadLine());
