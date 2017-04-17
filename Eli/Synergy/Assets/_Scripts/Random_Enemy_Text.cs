@@ -8,7 +8,11 @@ public class Random_Enemy_Text : MonoBehaviour {
     int Noun_Count = 877; int Verb_Count = 633;
 
 
-    // Use this for initialization
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     void Start () {
         Nouns = new string[Noun_Count]; Verbs = new string[Verb_Count];
         StreamReader noun_reader = new StreamReader("Noun_Source.txt");

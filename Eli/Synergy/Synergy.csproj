@@ -100,6 +100,7 @@
     <Compile Include="Assets\_Scripts\Shooty_Noise.cs" />
     <Compile Include="Assets\_Scripts\Shop_Button.cs" />
     <Compile Include="Assets\_Scripts\Synergy_Explosion.cs" />
+    <Compile Include="Assets\_Scripts\Task_Retriever.cs" />
     <Compile Include="Assets\_Scripts\Team_Assignment.cs" />
     <Compile Include="Assets\_Scripts\Text_Controller.cs" />
     <Compile Include="Assets\_Scripts\Tower_Attack.cs" />
