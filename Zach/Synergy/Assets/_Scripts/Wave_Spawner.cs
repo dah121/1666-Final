@@ -16,8 +16,6 @@ public class Wave_Spawner : MonoBehaviour
     public int WaveSize;
     public float WaveRate;    //Eli Added this for the Set_Wave_Stats() function. Delay between enemies in seconds.
     public Text LivesText;
-	private int round;
-	public Text RoundText;
 
 	//Zach added this for Background Music
 	private FadingAudioSource music;
@@ -31,7 +29,6 @@ public class Wave_Spawner : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		round = 0;
 		music = GameObject.Find ("Music Audio Source").GetComponent<FadingAudioSource> ();
         lives_track = gameObject.GetComponent<Lives_Tracker>();
 		shopPlaying = false;
@@ -71,8 +68,6 @@ public class Wave_Spawner : MonoBehaviour
 			music.Fade (shopMusic, 1f, true);
 		}
 
-		RoundText.text = "Round " + round;
-
         //if (CurrentLives > 0)
 
         //else
@@ -85,7 +80,7 @@ public class Wave_Spawner : MonoBehaviour
         txt.gameObject.GetComponent<Tower_Director>().End_Wave();
 		shopPlaying = true;
 		music.Fade (shopMusic, 1f, true);
-		round++;
+
 		//Automatically return to shop menu
 	}
 
@@ -108,7 +103,6 @@ public class Wave_Spawner : MonoBehaviour
 
     public void Set_Wave_Stats(int num_Enemies, float rate)
     {
-		round++;
         WaveSize = num_Enemies;
         WaveRate = rate;
     }

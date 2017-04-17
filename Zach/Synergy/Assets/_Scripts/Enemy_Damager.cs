@@ -90,7 +90,20 @@ public class Enemy_Damager : MonoBehaviour {
     
     private void ApplySynergy(GameObject source)
     {
-        KillEnemy(); //I used this to drastically show synergy, flesh out more
+        Tower_Attack tower = source.GetComponent<Tower_Attack>();
+        if(tower.GetComponent<Tower_Economy>().Upgrade != 3)
+        {
+            Damage(tower.damage * 2);
+            Slow(tower.slow * 2);
+            StartCoroutine(DamageOverTime(tower.dot_damage * 1.5f, tower.dot_rate * 1.5f, tower.dot_length * 1.5f));
+        }
+        else
+        {
+            Damage(tower.damage * 3);
+            Slow(tower.slow * 3);
+            StartCoroutine(DamageOverTime(tower.dot_damage * 2.25f, tower.dot_rate * 2.25f, tower.dot_length * 2.25f));
+        }
+        //KillEnemy(); //I used this to drastically show synergy, flesh out more
     }
 
     private void Damage(float damage)

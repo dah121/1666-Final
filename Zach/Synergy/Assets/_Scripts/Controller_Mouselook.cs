@@ -54,7 +54,7 @@ public class Controller_Mouselook : MonoBehaviour
         current_mouse_y = -Input.GetAxis("Mouse Y");
         y_rotation += current_mouse_y * Sensitivity * Time.deltaTime;
 
-        y_rotation = Mathf.Clamp(y_rotation, -80f, 80f);                //clamp y rotation bewteen 80 and -80 degrees (so you can't look all the way up and backwards)
+        y_rotation = Mathf.Clamp(y_rotation, -80f, 50f);                //clamp y rotation bewteen 80 and -80 degrees (so you can't look all the way up and backwards)
 
         team_x[Team-1] = x_rotation;
         team_y[Team-1] = y_rotation;

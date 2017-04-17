@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Cash_On_Death : MonoBehaviour
 {
-    public bool reached_end;
+    public bool no_payout;
     private GameControl Controller;
 
     // Use this for initialization
     void Start()
     {
         Controller = GameObject.Find("Tower Controller").GetComponent<GameControl>();
-        reached_end = false;
+        no_payout = false;
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class Cash_On_Death : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (!reached_end)
+        if (!no_payout)
         {
             Controller.gold += 25;
             string task_name = gameObject.GetComponentInChildren<TextMesh>().text;

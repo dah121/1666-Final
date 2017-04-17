@@ -6,35 +6,55 @@ using UnityEngine;
 
 public class Tower_Attack : MonoBehaviour {
     public string weapon_type; //hitscan, aoe?, status?
+
+    public int Upgrade_Level;
+
+    public float base_damage; //added by Eli. Total Damage = base*upgrade level
+    public float base_slow; 
+    public float base_dot; 
+
     public float damage;
+    public float slow;
+    public float dot_damage;
     public float dot_rate; //rate as how many seconds between damage pulses
     public float dot_length; //length as # of damage pulses
-    public float dot_damage;
-    public float slow;
+
     public float fire_rate;
     public bool auto_fire;
+
     public GameObject towerController;
     public Camera cam;
 
     public Transform Beam_Origin;
     public Beam_Effect Beam_Eff;
 
-
     private GameObject enemy;
     private Enemy_Damager damager;
 
 	// Use this for initialization
 	void Start () {
+        Upgrade_Level = gameObject.GetComponent<Tower_Economy>().Upgrade;
+
+        damage = base_damage * Upgrade_Level;
+        slow = base_slow * Upgrade_Level;
+        dot_damage = base_dot * Upgrade_Level;
+         
         enemy = null;
         damager = null;
         towerController = GameObject.Find("Tower Controller"); //Remove if public variable used
         cam = transform.FindChild("Camera").gameObject.GetComponent<Camera>(); //Remove if public variable used
+        this.enabled = false;
         
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(!auto_fire && Input.GetMouseButtonDown(0))
+        Upgrade_Level = gameObject.GetComponent<Tower_Economy>().Upgrade;
+        damage = base_damage * Upgrade_Level;
+        slow = base_slow * Upgrade_Level;
+        dot_damage = base_dot * Upgrade_Level;
+
+        if (!auto_fire && Input.GetMouseButtonDown(0))
         {
             Vector3 Beam_Dest;
 
