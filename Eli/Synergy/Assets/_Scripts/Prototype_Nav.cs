@@ -26,7 +26,7 @@ public class Prototype_Nav : MonoBehaviour {
 	void Update () {
         if (this.Agent.remainingDistance != 0 && this.Agent.remainingDistance < .1f)
         {
-            gameObject.GetComponent<Cash_On_Death>().reached_end = true;
+            gameObject.GetComponent<Cash_On_Death>().no_payout = true;
             Destroy(gameObject);
             lives.Decrement_Lives();
         }

@@ -102,10 +102,9 @@
     <Compile Include="Assets\_Scripts\Tower_Attack.cs" />
     <Compile Include="Assets\_Scripts\Tower_Builder.cs" />
     <Compile Include="Assets\_Scripts\Tower_Director.cs" />
+    <Compile Include="Assets\_Scripts\Tower_Economy.cs" />
     <Compile Include="Assets\_Scripts\Tower_Level.cs" />
     <Compile Include="Assets\_Scripts\Tower_Movement_Listener.cs" />
-    <Compile Include="Assets\_Scripts\Tower_Stats.cs" />
-    <Compile Include="Assets\_Scripts\Tower_Upgrade.cs" />
     <Compile Include="Assets\_Scripts\Wave_Spawner.cs" />
   </ItemGroup>
   <ItemGroup>

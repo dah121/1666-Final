@@ -17,6 +17,8 @@ public class Enemy_Damager : MonoBehaviour {
     private Queue<GameObject> synergized_sources;
     private float healthMod;
 
+    public int Upgrade_Level;
+
 	private UnityEngine.AI.NavMeshAgent navmesh;
 
 	Wave_Spawner ws; //Zach
