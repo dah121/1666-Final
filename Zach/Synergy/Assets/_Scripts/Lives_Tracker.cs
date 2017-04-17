@@ -8,6 +8,7 @@ public class Lives_Tracker : MonoBehaviour {
 
     public static int Lives;
     public Text LivesText;
+    public Text CompassLives;
 
 	// Use this for initialization
 	void Start ()
@@ -20,6 +21,7 @@ public class Lives_Tracker : MonoBehaviour {
 	void Update ()
     {
         LivesText.text = ("Lives: " + Lives);
+        CompassLives.text = ("Lives: " + Lives);
     }
 
     public void Set_Lives(int lives)

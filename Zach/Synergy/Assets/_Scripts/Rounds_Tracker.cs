@@ -12,6 +12,7 @@ public class Rounds_Tracker : MonoBehaviour {
     public int Num_Rounds;
     public Wave_Spawner spawner;
     public Text Rounds_Txt;
+    public Text Compass_Rounds;
 	
     // Use this for initialization
 	void Start () {
@@ -41,7 +42,8 @@ public class Rounds_Tracker : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Rounds_Txt.text = "Round " + Current_Round + "/" + Num_Rounds;
-	}
+        Compass_Rounds.text = "Round: " + Current_Round + "/" + Num_Rounds;
+    }
 
     public void Set_Round_Stats()
     {
