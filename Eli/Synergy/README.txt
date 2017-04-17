@@ -17,14 +17,6 @@ Made it so all of the tiles use the same material, proper texture
 -Different towers (With different costs, effects, etc.)
 -Sound Effect + Visual Effect (maybe a particle?) when Synergy Occurs
 I have a script where I tried to make the directional beams light up on the minimap, but it didn't work (I tried a long time ago). I would like for that to work too so I'll take a look
--Upgrading and Selling (Promoting and firing) Towers
-	I think I said I would do this, I just haven't gotten around to it yet. will soon
 -A shop that allows you to select different towers
 	instead of buying when you click a button, I was thinking the shop menu could just change which tower the tower_builder script is going to place next and money is deducted once tower is placed (since it already checks your $$$ and does not allow you to place a tower if gold < cost)
 -I'm gonna maybe add some props (Desk/Office-Supply Models to this level and make a new one (????)
-
-***Important***
-
-I just found out that if you export everything in someone's project as a UnityPackage (Assets>Export Package...) and then import it into your own project, it will add things your project doesn't have from the package, update things that have changed, and ignore things that are already in your project.
-It seems like the best way to add other peoples' functionalities to your project 
-I'm including a UnityPackage of the project in this repository. if you're using the "Synergy" project it SHOULD in theory get you up to date
