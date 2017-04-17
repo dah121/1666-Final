@@ -42,7 +42,7 @@ public class Rounds_Tracker : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Rounds_Txt.text = "Round " + Current_Round + "/" + Num_Rounds;
-        Compass_Rounds.text = "Round: " + Current_Round + "/" + Num_Rounds;
+        Compass_Rounds.text = "Round: " + (Current_Round + 1) + "/" + Num_Rounds;
     }
 
     public void Set_Round_Stats()

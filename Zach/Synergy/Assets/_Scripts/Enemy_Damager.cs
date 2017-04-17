@@ -12,6 +12,8 @@ public class Enemy_Damager : MonoBehaviour {
     public Image healthBar;
     public GameObject Synergy_Particle;
     public Transform Particle_Loc;
+    public AudioClip hitSound;
+    public AudioClip synergySound;
 
     private float default_speed; //Don't know if needed yet
     private float default_timer; //Definitely needed
@@ -83,6 +85,7 @@ public class Enemy_Damager : MonoBehaviour {
     **/
     private void Apply(GameObject source)
     {
+        GameObject.Find("Hitsound Audio Source").GetComponent<AudioSource>().PlayOneShot(hitSound, 1f);
         if(source.GetComponent<Tower_Attack>().isAccountant)
         {
             GetComponent<Cash_On_Death>().extra_payout = true;
@@ -97,6 +100,7 @@ public class Enemy_Damager : MonoBehaviour {
     
     private void ApplySynergy(GameObject source)
     {
+        GameObject.Find("Hitsound Audio Source").GetComponent<AudioSource>().PlayOneShot(synergySound, .7f);
         if (source.GetComponent<Tower_Attack>().isAccountant)
         {
             GetComponent<Cash_On_Death>().extra_payout = true;
@@ -172,6 +176,7 @@ public class Enemy_Damager : MonoBehaviour {
 
         for(int i = 0; i < length; i++)
         {
+            GameObject.Find("Hitsound Audio Source").GetComponent<AudioSource>().PlayOneShot(hitSound, .9f);
             Damage(damage);
             yield return new WaitForSeconds(rate);
         }
