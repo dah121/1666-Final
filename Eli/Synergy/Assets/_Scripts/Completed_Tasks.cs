@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Completed_Tasks : MonoBehaviour {
 
-    public static List<string> Tasks;
+    public List<string> Tasks;
 
 	// Use this for initialization
 	void Start () {
+        DontDestroyOnLoad(gameObject);
         Tasks = new List<string>();
 	}
 	

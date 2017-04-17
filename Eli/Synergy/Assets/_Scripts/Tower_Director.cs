@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Tower_Director : MonoBehaviour {
 
@@ -8,21 +9,31 @@ public class Tower_Director : MonoBehaviour {
     public Camera Minimap_Cam, Rounds_Cam, Lives_Cam;
     public Shooty_Noise Shot_Noise;
     public GameObject Spawn_Logic;
+    public GameObject Shop;
 
     //Eli Added these to automate round beginning and ending
     public GameObject Sel;
     public GameObject NextWaveButton;
-    public GameObject ShopButton;
     public GameObject Compass;
+
+    private bool destroyed;
 
     // Use this for initialization
     void Start () {
         Towers_Master = new List<GameObject>();
+        destroyed = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        
+        if (SceneManager.GetActiveScene().name != "Prototype" && SceneManager.GetActiveScene().name != "Level 2")
+        {
+            if (!destroyed)
+            {
+                Destroy(gameObject);
+                destroyed = true;
+            }
+        }
 	}
 
     public void Add_Tower(GameObject tower)
@@ -126,8 +137,8 @@ public class Tower_Director : MonoBehaviour {
         gameObject.GetComponent<Controller_Mouselook>().lock_cursor();
         Sel.SetActive(false);
         NextWaveButton.SetActive(false);
-        ShopButton.SetActive(false);
         Compass.SetActive(false);
+        Shop.SetActive(false);
         gameObject.GetComponent<Rounds_Tracker>().Set_Round_Stats();
         Spawn_Logic.GetComponent<Wave_Spawner>().BeginWave();
     }
@@ -137,7 +148,7 @@ public class Tower_Director : MonoBehaviour {
         Deactivate_Towers();
         Sel.SetActive(false);
         NextWaveButton.SetActive(true);
-        ShopButton.SetActive(true);
+        Shop.SetActive(true);
         Compass.SetActive(true);
         gameObject.GetComponent<Controller_Mouselook>().unlock_cursor();
     }

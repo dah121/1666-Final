@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Rounds_Tracker : MonoBehaviour {
@@ -38,17 +39,28 @@ public class Rounds_Tracker : MonoBehaviour {
                 i++;
             }
         }	while (round != null);
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
         Rounds_Txt.text = "Round " + Current_Round + "/" + Num_Rounds;
         Compass_Rounds.text = "Round: " + Current_Round + "/" + Num_Rounds;
+
+
+        if (Current_Round == Num_Rounds+1)
+        {
+            SceneManager.LoadScene(4);
+        }
     }
 
     public void Set_Round_Stats()
     {
-        spawner.Set_Wave_Stats(Round_Size[Current_Round], Round_Rate[Current_Round]);
-        Current_Round++;
+
+       if (Current_Round <= Num_Rounds - 1)
+       {
+                spawner.Set_Wave_Stats(Round_Size[Current_Round], Round_Rate[Current_Round]);
+       }
+       Current_Round++;
     }
 }

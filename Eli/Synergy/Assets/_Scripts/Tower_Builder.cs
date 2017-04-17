@@ -116,4 +116,9 @@ public class Tower_Builder : MonoBehaviour
         upgrades_open = false;
     }
 
+    public void Update_Tower(GameObject Tower)
+    {
+        Tower_Prefab = Tower;
+    }
+
 }

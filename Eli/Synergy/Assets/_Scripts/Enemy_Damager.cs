@@ -107,7 +107,7 @@ public class Enemy_Damager : MonoBehaviour {
         }
 
         Tower_Attack tower = source.GetComponent<Tower_Attack>();
-        if(tower.GetComponent<Tower_Economy>().Upgrade != 3)
+        if(tower.GetComponent<Tower_Economy>().Upgrade < 3)
         {
             Damage(tower.damage * 2);
             Slow(tower.slow * 2);

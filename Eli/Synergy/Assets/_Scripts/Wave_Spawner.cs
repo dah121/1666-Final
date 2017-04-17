@@ -17,6 +17,8 @@ public class Wave_Spawner : MonoBehaviour
     public float WaveRate;    //Eli Added this for the Set_Wave_Stats() function. Delay between enemies in seconds.
     public Text LivesText;
 
+    public Completed_Tasks Tasks;
+
 	//Zach added this for Background Music
 	private FadingAudioSource music;
 	public AudioClip shopMusic;
@@ -85,6 +87,7 @@ public class Wave_Spawner : MonoBehaviour
         for (int i = 0; i < WaveSize; i++)
         {
             Prototype_Nav enemy = Instantiate(Guy, StartLoc.position, StartLoc.rotation);
+            enemy.gameObject.GetComponent<Cash_On_Death>().Task_List = Tasks;
             enemy.lives = lives_track;
             txt.Get_Random_Pair(enemy.gameObject);
             enemy.StartWave(EndLoc.position);

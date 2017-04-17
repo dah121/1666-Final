@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Lives_Tracker : MonoBehaviour {
@@ -14,7 +15,7 @@ public class Lives_Tracker : MonoBehaviour {
 	void Start ()
     {
         //Change This.
-        Lives = 5;
+        Lives = 10;
 	}
 	
 	// Update is called once per frame
@@ -22,6 +23,12 @@ public class Lives_Tracker : MonoBehaviour {
     {
         LivesText.text = ("Lives: " + Lives);
         CompassLives.text = ("Lives: " + Lives);
+
+        if(Lives <= 0)
+        {
+            Destroy(GameObject.Find("Tower Controller"));
+            SceneManager.LoadScene(5);
+        }
     }
 
     public void Set_Lives(int lives)

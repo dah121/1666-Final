@@ -11,16 +11,6 @@ public class GameControl : MonoBehaviour {
 
     void Awake()
     {
-        /*if(control == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            control = gameObject.GetComponent<GameControl>();
-            SetGoldText();
-        }
-        else if(control != this)
-        {
-            Destroy(gameObject);
-        }*/
         control = gameObject.GetComponent<GameControl>();
         SetGoldText();
     }

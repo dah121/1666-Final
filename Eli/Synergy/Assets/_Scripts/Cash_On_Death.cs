@@ -7,6 +7,7 @@ public class Cash_On_Death : MonoBehaviour
     public bool no_payout;
     private GameControl Controller;
     public bool extra_payout;
+    public Completed_Tasks Task_List;
 
     // Use this for initialization
     void Start()
@@ -34,7 +35,7 @@ public class Cash_On_Death : MonoBehaviour
 
             string task_name = gameObject.GetComponentInChildren<TextMesh>().text;
             task_name = task_name.Replace('\n', ' ');
-            Completed_Tasks.Tasks.Add(task_name);
+            Task_List.Tasks.Add(task_name);
         }
     }
 }
