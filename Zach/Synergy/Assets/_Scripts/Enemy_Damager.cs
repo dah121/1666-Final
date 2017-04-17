@@ -10,6 +10,8 @@ public class Enemy_Damager : MonoBehaviour {
     public float min_speed;
     public float synergy_timer;
     public Image healthBar;
+    public GameObject Synergy_Particle;
+    public Transform Particle_Loc;
 
     private float default_speed; //Don't know if needed yet
     private float default_timer; //Definitely needed
@@ -81,6 +83,11 @@ public class Enemy_Damager : MonoBehaviour {
     **/
     private void Apply(GameObject source)
     {
+        if(source.GetComponent<Tower_Attack>().isAccountant)
+        {
+            GetComponent<Cash_On_Death>().extra_payout = true;
+        }
+
         Tower_Attack tower = source.GetComponent<Tower_Attack>();
         Damage(tower.damage);
         Slow(tower.slow);
@@ -90,6 +97,11 @@ public class Enemy_Damager : MonoBehaviour {
     
     private void ApplySynergy(GameObject source)
     {
+        if (source.GetComponent<Tower_Attack>().isAccountant)
+        {
+            GetComponent<Cash_On_Death>().extra_payout = true;
+        }
+
         Tower_Attack tower = source.GetComponent<Tower_Attack>();
         if(tower.GetComponent<Tower_Economy>().Upgrade != 3)
         {
@@ -103,7 +115,7 @@ public class Enemy_Damager : MonoBehaviour {
             Slow(tower.slow * 3);
             StartCoroutine(DamageOverTime(tower.dot_damage * 2.25f, tower.dot_rate * 2.25f, tower.dot_length * 2.25f));
         }
-        //KillEnemy(); //I used this to drastically show synergy, flesh out more
+        Instantiate(Synergy_Particle, Particle_Loc);
     }
 
     private void Damage(float damage)
@@ -119,20 +131,36 @@ public class Enemy_Damager : MonoBehaviour {
 
     private void KillEnemy()
     {
-		
 		ws.waveLeft--;
         StopAllCoroutines();
         Destroy(gameObject);
     }
 
 	IEnumerator SlowCo(float slow)
-	{
-		navmesh.speed -= slow;
-		if (speed < min_speed) {
-			navmesh.speed = min_speed;
-		}
+    {
+        bool slowed = false;
+
+        if(navmesh.speed >= min_speed)
+        {
+            if(navmesh.speed - slow <= 0)
+            {
+                navmesh.speed = min_speed;
+            }
+            else
+            {
+                navmesh.speed -= slow;
+            }
+            slowed = true;
+        }
+
+        if(navmesh.speed < min_speed)
+        {
+            navmesh.speed = min_speed;
+        }
+
 		yield return new WaitForSeconds (3);
-		navmesh.speed += slow;
+        if(slowed)
+            navmesh.speed += slow;
 	}
 
     IEnumerator DamageOverTime(float damage, float rate, float length)

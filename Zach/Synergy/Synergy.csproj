@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Sharp Text Mesh\Script\SharpText.cs" />
+    <Compile Include="Assets\SimpleParticlePack\Scripts\ParticleTester.cs" />
     <Compile Include="Assets\_Scripts\Aim.cs" />
     <Compile Include="Assets\_Scripts\Beam_Effect.cs" />
     <Compile Include="Assets\_Scripts\Cash_On_Death.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Assets\_Scripts\Selector_Color.cs" />
     <Compile Include="Assets\_Scripts\Shooty_Noise.cs" />
     <Compile Include="Assets\_Scripts\Shop_Button.cs" />
+    <Compile Include="Assets\_Scripts\Synergy_Explosion.cs" />
     <Compile Include="Assets\_Scripts\Team_Assignment.cs" />
     <Compile Include="Assets\_Scripts\Text_Controller.cs" />
     <Compile Include="Assets\_Scripts\Tower_Attack.cs" />
