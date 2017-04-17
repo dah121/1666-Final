@@ -13,13 +13,13 @@ public class Controller_Mouselook : MonoBehaviour
     private float[] team_x = {0f, 0f, 0f, 0f};
     private float[] team_y = {0f, 90f, 180f, 270f};
     public float Sensitivity = 100f;
-    public AudioClip sound;
 
     // Use this for initialization
     void Start()
     {
         t = transform;
         Team = 1;
+        this.enabled = false;
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class Controller_Mouselook : MonoBehaviour
         current_mouse_y = -Input.GetAxis("Mouse Y");
         y_rotation += current_mouse_y * Sensitivity * Time.deltaTime;
 
-        y_rotation = Mathf.Clamp(y_rotation, -80f, 38f);                //clamp x rotation bewteen 30 and -80 degrees (so you can't look all the way up and backwards)
+        y_rotation = Mathf.Clamp(y_rotation, -80f, 38f);                //clamp y rotation bewteen 80 and -80 degrees (so you can't look all the way up and backwards)
 
         team_x[Team-1] = x_rotation;
         team_y[Team-1] = y_rotation;
@@ -67,11 +67,6 @@ public class Controller_Mouselook : MonoBehaviour
         {
             Team = 4;
         }
-
-        if(old_team != Team)
-        {
-            GetComponent<AudioSource>().PlayOneShot(sound, 1f);
-        }       
     }
 
     //Locks the cursor

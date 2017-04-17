@@ -45,6 +45,8 @@ public class Tower_Director : MonoBehaviour {
             Towers_Master[i].GetComponentInChildren<Tower_Attack>().enabled = true;
         }
 
+        gameObject.GetComponent<Controller_Mouselook>().enabled = true;
+
         Shot_Noise.enabled = true;
         Minimap_Cam.gameObject.SetActive(true);
         Rounds_Cam.gameObject.SetActive(true);
@@ -64,6 +66,7 @@ public class Tower_Director : MonoBehaviour {
         }
 
         gameObject.GetComponent<Team_Assignment>().enabled = true;
+        gameObject.GetComponent<Controller_Mouselook>().enabled = false;
 
         Shot_Noise.enabled = false;
         Minimap_Cam.gameObject.SetActive(false);
