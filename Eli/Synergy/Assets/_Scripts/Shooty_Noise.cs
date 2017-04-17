@@ -16,7 +16,7 @@ public class Shooty_Noise : MonoBehaviour {
 	void Update () {
         if (Input.GetMouseButtonDown(0))
         {
-            AS.PlayOneShot(Shoot_Clip);
+            //AS.PlayOneShot(Shoot_Clip);
         }
 		
 	}

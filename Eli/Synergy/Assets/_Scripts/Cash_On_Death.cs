@@ -6,12 +6,14 @@ public class Cash_On_Death : MonoBehaviour
 {
     public bool no_payout;
     private GameControl Controller;
+    public bool extra_payout;
 
     // Use this for initialization
     void Start()
     {
         Controller = GameObject.Find("Tower Controller").GetComponent<GameControl>();
         no_payout = false;
+        extra_payout = false;
     }
 
     // Update is called once per frame
@@ -25,6 +27,11 @@ public class Cash_On_Death : MonoBehaviour
         if (!no_payout)
         {
             Controller.gold += 25;
+            if(extra_payout)
+            {
+                Controller.gold += 5;
+            }
+
             string task_name = gameObject.GetComponentInChildren<TextMesh>().text;
             task_name = task_name.Replace('\n', ' ');
             Completed_Tasks.Tasks.Add(task_name);

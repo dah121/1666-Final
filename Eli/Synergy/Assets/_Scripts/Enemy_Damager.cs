@@ -83,6 +83,11 @@ public class Enemy_Damager : MonoBehaviour {
     **/
     private void Apply(GameObject source)
     {
+        if(source.GetComponent<Tower_Attack>().isAccountant)
+        {
+            GetComponent<Cash_On_Death>().extra_payout = true;
+        }
+
         Tower_Attack tower = source.GetComponent<Tower_Attack>();
         Damage(tower.damage);
         Slow(tower.slow);
@@ -92,6 +97,11 @@ public class Enemy_Damager : MonoBehaviour {
     
     private void ApplySynergy(GameObject source)
     {
+        if (source.GetComponent<Tower_Attack>().isAccountant)
+        {
+            GetComponent<Cash_On_Death>().extra_payout = true;
+        }
+
         Tower_Attack tower = source.GetComponent<Tower_Attack>();
         if(tower.GetComponent<Tower_Economy>().Upgrade != 3)
         {
@@ -121,20 +131,36 @@ public class Enemy_Damager : MonoBehaviour {
 
     private void KillEnemy()
     {
-		
 		ws.waveLeft--;
         StopAllCoroutines();
         Destroy(gameObject);
     }
 
 	IEnumerator SlowCo(float slow)
-	{
-		navmesh.speed -= slow;
-		if (speed < min_speed) {
-			navmesh.speed = min_speed;
-		}
+    {
+        bool slowed = false;
+
+        if(navmesh.speed >= min_speed)
+        {
+            if(navmesh.speed - slow <= 0)
+            {
+                navmesh.speed = min_speed;
+            }
+            else
+            {
+                navmesh.speed -= slow;
+            }
+            slowed = true;
+        }
+
+        if(navmesh.speed < min_speed)
+        {
+            navmesh.speed = min_speed;
+        }
+
 		yield return new WaitForSeconds (3);
-		navmesh.speed += slow;
+        if(slowed)
+            navmesh.speed += slow;
 	}
 
     IEnumerator DamageOverTime(float damage, float rate, float length)

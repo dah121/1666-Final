@@ -68,11 +68,6 @@ public class Wave_Spawner : MonoBehaviour
 			music.Fade (shopMusic, 1f, true);
 		}
 
-        //if (CurrentLives > 0)
-
-        //else
-          //  LivesText.text = "You Lose!";
-
     }
 
 	private void EndWave()
@@ -80,8 +75,6 @@ public class Wave_Spawner : MonoBehaviour
         txt.gameObject.GetComponent<Tower_Director>().End_Wave();
 		shopPlaying = true;
 		music.Fade (shopMusic, 1f, true);
-
-		//Automatically return to shop menu
 	}
 
     private IEnumerator StartWave()
@@ -96,7 +89,7 @@ public class Wave_Spawner : MonoBehaviour
             txt.Get_Random_Pair(enemy.gameObject);
             enemy.StartWave(EndLoc.position);
             currentWaveUnits.Add(enemy);
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(WaveRate);
         }
 
     }
