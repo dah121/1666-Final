@@ -16,6 +16,7 @@ public class Task_Retriever : MonoBehaviour {
             task_string += Completed_Tasks.Tasks[i] + "\n";
         }
         Task_Text.text = task_string;
+        Destroy(GameObject.Find("Tower Controller"));
 	}
 	
 	// Update is called once per frame
