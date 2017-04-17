@@ -13,13 +13,13 @@ public class Controller_Mouselook : MonoBehaviour
     private float[] team_x = {0f, 0f, 0f, 0f};
     private float[] team_y = {0f, 90f, 180f, 270f};
     public float Sensitivity = 100f;
-    public AudioClip sound;
 
     // Use this for initialization
     void Start()
     {
         t = transform;
         Team = 1;
+        this.enabled = false;
     }
 
     // Update is called once per frame
@@ -67,11 +67,6 @@ public class Controller_Mouselook : MonoBehaviour
         {
             Team = 4;
         }
-
-        if(old_team != Team)
-        {
-            GetComponent<AudioSource>().PlayOneShot(sound, 1f);
-        }       
     }
 
     //Locks the cursor
