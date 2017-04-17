@@ -65,7 +65,7 @@ public class Tower_Attack : MonoBehaviour {
 
         if (!auto_fire && Input.GetMouseButtonDown(0))
         {
-            GetComponent<AudioSource>().PlayOneShot(shootSound, 1f);
+            GameObject.Find("Universal Audio Source").GetComponent<AudioSource>().PlayOneShot(shootSound, 1f);
 
             Vector3 Beam_Dest;
 
@@ -94,7 +94,7 @@ public class Tower_Attack : MonoBehaviour {
             if(auto_timer < 0)
             {
                 auto_timer = fire_rate;
-                GetComponent<AudioSource>().PlayOneShot(shootSound, 1f);
+                GameObject.Find("Universal Audio Source").GetComponent<Shooty_Noise>().auto = true;
 
                 Vector3 Beam_Dest;
 
